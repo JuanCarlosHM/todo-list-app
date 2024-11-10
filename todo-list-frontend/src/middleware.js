@@ -8,7 +8,9 @@ export function middleware (request) {
   const cookies = request.cookies.getAll()
   console.log('Cookies disponibles:', cookies)
 
-  const secret = new TextEncoder().encode(process.env.JWT_SECRET)
+  const secret = Buffer.from(process.env.JWT_SECRET, 'base64')
+
+  //const secret = new TextEncoder().encode(process.env.JWT_SECRET)
   console.log('secret', secret)
 
   if (pathname === '/login' || pathname === '/register' || pathname === '/') {

@@ -46,13 +46,11 @@ export const logoutUser = async (req, res) => {
     httpOnly: true,
     secure: true,
     sameSite: 'none',
-    path: '/',
   });
   res.clearCookie('_vercel_jwt', {
     httpOnly: true,
     secure: true,
     sameSite: 'none',
-    path: '/',
   });
 
   res.status(200).json({ message: 'Sesión cerrada con éxito' });

@@ -3,16 +3,16 @@ import { jwtVerify } from 'jose'
 
 export function middleware (request) {
   const { pathname } = request.nextUrl
-
   const token = request.cookies.get('token')?.value
 
+  const secret = new TextEncoder().encode(process.env.JWT_SECRET)
+
   if (pathname === '/login' || pathname === '/register' || pathname === '/') {
+    console.log('token -->', token)
     if (token) {
       try {
-        const secret = new TextEncoder().encode(process.env.JWT_SECRET)
         jwtVerify(token, secret)
-        const tasksUrl = new URL('/tasks', request.url)
-        return NextResponse.redirect(tasksUrl)
+        return NextResponse.redirect(new URL('/tasks', request.url))
       } catch (err) {
         console.log('Token inválido en /login:', err.message)
       }
@@ -27,10 +27,9 @@ export function middleware (request) {
       return NextResponse.redirect(loginUrl)
     }
     try {
-      const secret = new TextEncoder().encode(process.env.NEXT_PUBLIC_JWT_SECRET)
       jwtVerify(token, secret)
     } catch (err) {
-      console.log('Token inválido en /tasks:', err.message)
+      console.error(`Error al verificar token en ${pathname}: ${err.message}`)
       const loginUrl = new URL('/login', request.url)
       return NextResponse.redirect(loginUrl)
     }

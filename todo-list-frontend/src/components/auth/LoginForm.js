@@ -21,7 +21,7 @@ export default function LoginForm () {
       // Manejar errores
       setError(err.response?.data?.error || 'Error al iniciar sesión')
     }
-    redirect('/login')
+    redirect('/tasks')
   }
 
   return (

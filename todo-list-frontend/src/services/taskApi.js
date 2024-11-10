@@ -1,4 +1,4 @@
-const API = process.env.URL_API
+const API = process.env.NEXT_PUBLIC_URL_API
 // TAREAS
 export const getTasks = async () => {
   const response = await fetch(`${API}/tasks`, {

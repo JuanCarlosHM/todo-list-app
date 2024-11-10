@@ -64,7 +64,6 @@ cd todo-list-app
 3. Configura las variables de entorno creando un archivo `.env.local`:
    ```env
    NEXT_PUBLIC_API_URL=
-   JWT_SECRET=
    ```
 
 4. Inicia la aplicación:

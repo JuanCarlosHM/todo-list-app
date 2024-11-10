@@ -3,9 +3,12 @@ import { jwtVerify } from 'jose'
 
 export function middleware (request) {
   const { pathname } = request.nextUrl
-  const token = request.cookies.get('token')?.value
+  // const token = request.cookies.get('token')?.value
+  const token = request.cookies.get('token')?.value || request.cookies.get('_vercel_jwt')?.value
+
   const cookies = request.cookies.getAll()
   console.log('Cookies disponibles:', cookies)
+
   const secret = new TextEncoder().encode(process.env.JWT_SECRET)
 
   if (pathname === '/login' || pathname === '/register' || pathname === '/') {

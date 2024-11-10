@@ -1,5 +1,4 @@
-const API = process.env.URL_API || 'http://localhost:5000/api'
-
+const API = process.env.URL_API
 // TAREAS
 export const getTasks = async () => {
   const response = await fetch(`${API}/tasks`, {

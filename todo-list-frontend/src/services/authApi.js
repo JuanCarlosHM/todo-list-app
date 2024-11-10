@@ -1,4 +1,4 @@
-const API = 'http://localhost:5000/api'
+const API = process.env.URL_API || 'http://localhost:5000/api'
 
 const fetchApi = async (url, options = {}) => {
   try {

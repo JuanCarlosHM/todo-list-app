@@ -4,12 +4,13 @@ import { useState } from 'react'
 
 import { loginUser } from '@/services/authApi'
 import styles from './auth.module.css'
-import { redirect } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 
 export default function LoginForm () {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
+  const router = useRouter()
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -21,7 +22,7 @@ export default function LoginForm () {
       // Manejar errores
       setError(err.response?.data?.error || 'Error al iniciar sesión')
     }
-    redirect('/tasks')
+    router.push('/tasks')
   }
 
   return (

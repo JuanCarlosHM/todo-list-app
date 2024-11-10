@@ -14,7 +14,8 @@ import {
 import BreadcrumbHeader from '@/components/common/BreadcrumbHeader'
 import SubtaskDetail from '@/components/task/subtaskdetail'
 import CommentDetail from '@/components/task/CommentDetail'
-import { redirect } from 'next/navigation'
+import { useRouter } from 'next/navigation'
+
 
 export default function TaskDetailPage ({ params }) {
   const { id } = use(params)
@@ -28,6 +29,7 @@ export default function TaskDetailPage ({ params }) {
 
   const [newSubtask, setNewSubtask] = useState('')
   const [newComment, setNewComment] = useState('')
+  const router = useRouter()
 
   useEffect(() => {
     fetchTask(id)
@@ -66,7 +68,7 @@ export default function TaskDetailPage ({ params }) {
     } catch (err) {
       setError(err.message)
     }
-    redirect('/tasks')
+    router.push('/tasks')
   }
   // subtaask
   const handleAddSubtask = async () => {

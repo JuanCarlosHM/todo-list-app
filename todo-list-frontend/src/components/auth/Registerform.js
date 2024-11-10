@@ -3,12 +3,13 @@
 import { useState } from 'react'
 import { registerUser } from '@/services/authApi'
 import styles from '@/components/auth/auth.module.css'
-import { redirect } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 
 export default function RegisterForm () {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
+  const router = useRouter()
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -18,7 +19,7 @@ export default function RegisterForm () {
     } catch (err) {
       setError(err.response?.data?.error || 'Error al registrarse')
     }
-    redirect('/login')
+    router.push('/login')
   }
 
   return (

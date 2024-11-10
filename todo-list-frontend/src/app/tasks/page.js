@@ -3,16 +3,17 @@
 import { useState, useEffect } from 'react'
 import styles from './tasks.module.css'
 import { createTask, deleteTask, getTasks } from '@/services/taskApi'
-import { redirect } from 'next/navigation'
 import { logoutUser } from '@/services/authApi'
+import { useRouter } from 'next/navigation'
 
 export default function TasksPage () {
   const [tasks, setTasks] = useState([])
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
 
-  const [showModal, setShowModal] = useState(false) // Controla el modal
-  const [newTask, setNewTask] = useState({ title: '', description: '' }) // Nueva tarea
+  const [showModal, setShowModal] = useState(false)
+  const [newTask, setNewTask] = useState({ title: '', description: '' })
+  const router = useRouter()
 
   useEffect(() => {
     fetchTasks()
@@ -33,7 +34,7 @@ export default function TasksPage () {
   }
 
   const handleViewTask = (taskId) => {
-    redirect(`/tasks/${taskId}`)
+    router.push(`/tasks/${taskId}`)
   }
 
   const handleDeleteTask = async (taskId) => {
@@ -74,7 +75,7 @@ export default function TasksPage () {
     } catch (err) {
       console.error('Error al cerrar sesión:', err.message)
     }
-    redirect('/login')
+    router.push('/login')
   }
 
   return (

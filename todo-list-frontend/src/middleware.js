@@ -6,7 +6,7 @@ export function middleware (request) {
 
   const token = request.cookies.get('token')?.value
 
-  if (pathname === '/login') {
+  if (pathname === '/login' || pathname === '/register' || pathname === '/') {
     if (token) {
       try {
         const secret = new TextEncoder().encode(process.env.JWT_SECRET)
@@ -40,5 +40,5 @@ export function middleware (request) {
 }
 
 export const config = {
-  matcher: ['/tasks/:path*', '/login']
+  matcher: ['/tasks/:path*', '/login', '/register', '/']
 }

@@ -1,40 +1,26 @@
-'use client'
-
-import { useContext, useEffect } from 'react'
-import { useRouter } from 'next/navigation'
 import Link from 'next/link'
-import { AuthContext } from '@/context/authcontext'
 import Header from '@/components/common/Header'
 import styles from './page.module.css'
 import Footer from '@/components/common/Footer'
 
 export default function HomePage () {
-  const { user } = useContext(AuthContext)
-  const router = useRouter()
-
-  useEffect(() => {
-    if (user) {
-      router.push('/tasks')
-    }
-  }, [user, router])
-
-  if (user) return null
-
   return (
     <div>
       <Header />
       <main className={styles.main}>
-        <h1 className={styles.main__title}> todo- list app for important things </h1>
-        <p className={styles.main__content}> Sign up for free and become one of the millions of people around the world who have fallen in love with todo app! </p>
+        <h1 className={styles.main__title}> todo- list para las cosas importantes </h1>
+        <p className={styles.main__content}> ¡Regístrate gratis y únete a los millones de personas en todo el mundo que se han enamorado de Todo App! Todo.
+
+        </p>
       </main>
 
       <div className={styles.nav}>
         <Link className={styles.nav__links} href='/register'>
-          <strong> Register </strong>
+          <strong> Regístrate </strong>
         </Link>
 
         <Link className={styles.nav__links} href='/login'>
-          <strong> Sign in </strong>
+          <strong> Inicia sesión </strong>
         </Link>
       </div>
       <Footer />

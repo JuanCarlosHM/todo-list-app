@@ -4,6 +4,8 @@ export function middleware (request) {
   const { pathname } = request.nextUrl
   const token = request.cookies.get('token')?.value || request.cookies.get('_vercel_jwt')?.value
 
+  console.log('here is token -->', token)
+
   if (pathname === '/login' || pathname === '/register' || pathname === '/') {
     if (token) {
       return NextResponse.redirect(new URL('/tasks', request.url))

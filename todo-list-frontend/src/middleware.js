@@ -4,7 +4,8 @@ import { jwtVerify } from 'jose'
 export function middleware (request) {
   const { pathname } = request.nextUrl
   const token = request.cookies.get('token')?.value
-
+  const cookies = request.cookies.getAll()
+  console.log('Cookies disponibles:', cookies)
   const secret = new TextEncoder().encode(process.env.JWT_SECRET)
 
   if (pathname === '/login' || pathname === '/register' || pathname === '/') {

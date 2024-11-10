@@ -27,7 +27,7 @@ export function middleware (request) {
       return NextResponse.redirect(loginUrl)
     }
     try {
-      const secret = new TextEncoder().encode(process.env.JWT_SECRET)
+      const secret = new TextEncoder().encode(process.env.NEXT_PUBLIC_JWT_SECRET)
       jwtVerify(token, secret)
     } catch (err) {
       console.log('Token inválido en /tasks:', err.message)

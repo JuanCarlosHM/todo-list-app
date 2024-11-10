@@ -46,3 +46,4 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+/todo-list-frontend/package-lock.json

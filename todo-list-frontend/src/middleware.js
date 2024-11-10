@@ -20,10 +20,6 @@ export function middleware (request) {
         return NextResponse.redirect(new URL('/tasks', request.url))
       } catch (err) {
         console.log('Token inválido en /login:', err.message)
-        const cookieStore = cookies()
-        cookieStore.getAll().forEach((cookie) => {
-          cookieStore.delete(cookie.name)
-        })
       }
     }
     return NextResponse.next()

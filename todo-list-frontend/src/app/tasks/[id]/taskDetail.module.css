@@ -1,0 +1,199 @@
+.container {
+    padding: 1.5rem;
+    max-width: 50rem;
+    margin: 0 auto 2rem auto;
+    background-color: #fff;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+    border-radius: 0.625rem;
+}
+
+.title {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+}
+
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.formGroup {
+    display: flex;
+    flex-direction: column;
+}
+
+.label {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+    color: #555;
+}
+
+.input,
+.textarea {
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 0.375rem;
+    font-size: 1rem;
+}
+
+.input::placeholder,
+.textarea::placeholder {
+    color: #bbb;
+}
+
+.textarea {
+    resize: none;
+}
+
+.statusToggle {
+    display: flex;
+    gap: 1rem;
+}
+
+.statusOption {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1rem;
+}
+
+.buttonGroup {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+}
+
+.cancelButton {
+    padding: 0.625rem 1.25rem;
+    font-size: 1rem;
+    background-color: #f5f5f5;
+    border: 1px solid #ddd;
+    border-radius: 0.375rem;
+    color: #555;
+    cursor: pointer;
+}
+
+.cancelButton:hover {
+    background-color: #e0e0e0;
+}
+
+.createButton {
+    padding: 0.625rem 1.25rem;
+    font-size: 1rem;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 0.375rem;
+    cursor: pointer;
+}
+
+.createButton:hover {
+    background-color: #0056b3;
+}
+
+
+.sectionTitle {
+    font-size: 1.5rem;
+    margin: 2rem 0 1rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.subtaskList,
+.commentList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.subtask,
+.comment {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem;
+    border-bottom: 1px solid #ddd;
+}
+
+.subtask:hover,
+.comment:hover {
+    background-color: #f9f9f9;
+}
+
+.subtaskCompleted {
+    text-decoration: line-through;
+    color: gray;
+}
+
+.subtaskPending {
+    color: #333;
+    font-weight: bold;
+}
+
+.statusSelect {
+    padding: 0.5rem;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 0.375rem;
+    background-color: white;
+    cursor: pointer;
+}
+
+.statusSelect:focus {
+    outline: none;
+    border-color: #007bff;
+}
+
+.addSubtask,
+.addComment {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+}
+
+.addSubtask .input,
+.addComment .textarea {
+    flex: 1;
+}
+
+.addSubtask .createButton,
+.addComment .createButton {
+    padding: 0.5rem 1rem;
+}
+
+.deleteButton {
+    background-color: red;
+    color: white;
+    padding: 0.5rem;
+    border: none;
+    border-radius: 0.375rem;
+    cursor: pointer;
+    font-size: 0.875rem;
+}
+
+.deleteButton:hover {
+    background-color: darkred;
+}
+
+.loading {
+    text-align: center;
+    font-size: 1.25rem;
+    color: #007bff;
+}
+
+.error {
+    color: red;
+    text-align: center;
+    font-size: 1rem;
+}
+
+.commentInput {
+    min-width: 200px;
+}

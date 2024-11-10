@@ -9,7 +9,8 @@ import {
   updateTask,
   addComment,
   editComment,
-  deleteComment
+  deleteComment,
+  getTask
 } from '../controllers/taskController.js'
 import authMiddleware from '../middleware/authMiddleware.js'
 
@@ -21,6 +22,7 @@ router.use(authMiddleware)
 router.get('/', getTasks)
 router.post('/', createTask)
 router.put('/:id', updateTask)
+router.get('/:id', getTask)
 router.delete('/:id', deleteTask)
 
 // subtask

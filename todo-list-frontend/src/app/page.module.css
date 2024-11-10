@@ -1,0 +1,42 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.main__title  {
+  text-align: center;
+  padding: 1rem;
+}
+
+.main__content {
+  text-align: center;
+  padding: 1rem;
+}
+
+.nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.nav__links {
+  flex: 1 2 auto;
+
+  background-color: #535FD7;
+  color: #fff;
+  text-align: center;
+  padding: 1rem;
+  max-width: 450px;
+  min-width: 300px;
+}
+
+.nav__links:hover {
+  background: #2934ac;
+  color: white;
+}

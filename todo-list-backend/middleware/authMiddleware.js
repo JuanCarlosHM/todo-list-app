@@ -1,13 +1,10 @@
 import jwt from 'jsonwebtoken'
 
 const authMiddleware = (req, res, next) => {
-  const authHeader = req.header('Authorization')
-
-  if (!authHeader || !authHeader.startsWith('Bearer ')) {
-    return res.status(401).json({ error: 'Acceso denegado' })
+  const token = req.cookies.token
+  if (!token) {
+    return res.status(401).json({ error: 'Acceso no autorizado' })
   }
-
-  const token = req.header('Authorization')?.split(' ')[1]
 
   try {
     const verified = jwt.verify(token, process.env.JWT_SECRET)

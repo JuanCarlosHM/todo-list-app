@@ -2,7 +2,10 @@ import Task from '../models/Task.js'
 
 export const createTask = async (req, res) => {
   try {
-    const { title, description } = req.body
+    let { title, description } = req.body
+    if (!description || description.length === 0) {
+      description = ''
+    }
     const newTask = new Task({
       title,
       description,
@@ -26,6 +29,22 @@ export const getTasks = async (req, res) => {
     res.json(tasks)
   } catch (error) {
     res.status(500).json({ error: 'Error obteniendo las tareas' })
+  }
+}
+export const getTask = async (req, res) => {
+  try {
+    const { id } = req.params
+
+    const task = await Task.findOne({ _id: id })
+
+    if (!task) {
+      return res.status(404).json({ error: 'Tarea no encontrada o no tienes acceso' })
+    }
+
+    res.status(200).json(task)
+  } catch (error) {
+    console.error('Error al obtener la tarea:', error)
+    res.status(500).json({ error: 'Error interno del servidor' })
   }
 }
 
@@ -84,7 +103,7 @@ export const addSubtask = async (req, res) => {
     task.subtasks.push(subtask)
     task.status = 'pendiente'
     await task.save()
-    res.status(201).json(task)
+    res.status(201).json(task.subtasks[task.subtasks.length - 1])
   } catch (error) {
     res.status(500).json({ error: 'Error al agregar subtarea' })
   }
@@ -147,7 +166,7 @@ export const addComment = async (req, res) => {
     task.comments.push(comment)
 
     await task.save()
-    res.status(201).json(task)
+    res.status(201).json(task.comments[task.comments.length - 1])
   } catch (error) {
     res.status(500).json({ error: 'Error al añadir el comentario' })
   }

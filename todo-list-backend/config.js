@@ -5,6 +5,7 @@ export const {
   MONGO_URI = '',
   MONGO_USER = '',
   MONGO_PASSWORD = '',
-  JWT_SECRET
+  JWT_SECRET,
+  NODE_ENV = 'development'
 
 } = process.env

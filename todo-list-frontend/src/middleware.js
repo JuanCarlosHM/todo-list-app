@@ -8,6 +8,7 @@ export function middleware (request) {
 
   const cookies = request.cookies.getAll()
   console.log('Cookies disponibles:', cookies)
+  console.log('token', token)
 
   const secret = new TextEncoder().encode(process.env.JWT_SECRET)
 
@@ -19,6 +20,10 @@ export function middleware (request) {
         return NextResponse.redirect(new URL('/tasks', request.url))
       } catch (err) {
         console.log('Token inválido en /login:', err.message)
+        const cookieStore = cookies()
+        cookieStore.getAll().forEach((cookie) => {
+          cookieStore.delete(cookie.name)
+        })
       }
     }
     return NextResponse.next()

@@ -1,4 +1,4 @@
-import User from '../models/User.js'
+import User from '../models/user.js'
 import jwt from 'jsonwebtoken'
 import bcrypt from 'bcrypt'
 import { JWT_SECRET, NODE_ENV } from '../config.js'
@@ -34,17 +34,14 @@ export const loginUser = async (req, res) => {
       httpOnly: true,
       secure: false,
       sameSite: 'strict',
-      maxAge: 60 * 60 * 10000, // <-- change this
-    }).send({email, token})
-
-
+      maxAge: 60 * 60 * 10000 // <-- change this
+    }).send({ email, token })
   } catch (error) {
     res.status(500).json({ error: 'Error iniciando sesión' })
   }
 }
 
-
 export const logoutUser = async (req, res) => {
-  res.clearCookie('token');
-  res.status(200).json({ message: 'Sesión cerrada con éxito' });
+  res.clearCookie('token')
+  res.status(200).json({ message: 'Sesión cerrada con éxito' })
 }
